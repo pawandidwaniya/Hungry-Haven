@@ -3,9 +3,10 @@ package com.cdac.hungryhaven.models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.antlr.v4.runtime.misc.NotNull;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,31 +21,31 @@ public class RestaurantEntity {
     @Id
     private String id;
 
-    @NotNull
+    @NotBlank
     private String restaurantId;
 
-    @NotNull
+    @NotBlank
     private String name;
 
-    @NotNull
+    @NotBlank
     private String city;
 
-    @NotNull
+    @NotBlank
     private String imageUrl;
 
-    @NotNull
+    @NotBlank
     private Double latitude;
 
-    @NotNull
+    @NotBlank
     private Double longitude;
 
-    @NotNull
+    @NotBlank
     private String opensAt;
 
-    @NotNull
+    @NotBlank
     private String closesAt;
 
-    @NotNull
+    @NotBlank
     private List<String> attributes = new ArrayList<>();
 
 

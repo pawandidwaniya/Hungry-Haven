@@ -3,7 +3,8 @@ package com.cdac.hungryhaven.models;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.antlr.v4.runtime.misc.NotNull;
+
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,18 +19,18 @@ public class ItemEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @NotNull
+    @NotBlank
     private String itemId;
 
-    @NotNull
+    @NotBlank
     private String name;
 
-    @NotNull
+    @NotBlank
     private String imageUrl;
 
-    @NotNull
+    @NotBlank
     private Double price;
 
-    @NotNull
+    @NotBlank
     private List<String> attributes = new ArrayList<>();
 }
