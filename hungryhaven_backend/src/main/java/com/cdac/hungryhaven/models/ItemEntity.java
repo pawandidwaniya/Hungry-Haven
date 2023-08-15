@@ -10,42 +10,27 @@ import org.antlr.v4.runtime.misc.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-// Java class that maps to MySql table.
 @Entity
 @Data
-@Table(name = "restaurants")
+@Table(name = "items")
 @NoArgsConstructor
-public class RestaurantEntity {
+public class ItemEntity {
 
     @Id
     private String id;
 
     @NotNull
-    private String restaurantId;
+    private String itemId;
 
     @NotNull
     private String name;
 
     @NotNull
-    private String city;
-
-    @NotNull
     private String imageUrl;
 
     @NotNull
-    private Double latitude;
-
-    @NotNull
-    private Double longitude;
-
-    @NotNull
-    private String opensAt;
-
-    @NotNull
-    private String closesAt;
+    private Double price;
 
     @NotNull
     private List<String> attributes = new ArrayList<>();
-
-
 }
