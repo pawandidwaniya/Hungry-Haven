@@ -15,7 +15,7 @@ import java.util.List;
 public class Item {
 
     @Id
-    private String id;
+    private Long id;
 
     @NotNull
     String itemId;
