@@ -15,7 +15,8 @@ public class ItemEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long itemId;
+    @Column(name = "item_id")
+    private Long id;
 
     @Column(name = "item_name")
     @NotBlank
@@ -27,4 +28,12 @@ public class ItemEntity {
     @Column(name = "item_price")
     @NotBlank
     private Double price;
+    
+    @ManyToOne
+    @JoinColumn(name = "cart_id") // This links the item to its parent cart
+    private CartEntity cart;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "menu_id")
+    private MenuEntity menu;
 }

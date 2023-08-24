@@ -112,7 +112,7 @@ public class CartRepositoryServiceImpl implements CartRepositoryService {
 		      
 		      for (ItemEntity itemInCart : itemList) {
 		        
-		    	  if (item.getItemId().equals(itemInCart.getItemId())) {
+		    	  if (item.getId().equals(itemInCart.getId())) {
 		          cartEntity.removeItem(item);
 		          break;
 		        }

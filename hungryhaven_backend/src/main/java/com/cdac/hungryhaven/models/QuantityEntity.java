@@ -16,7 +16,7 @@ public class QuantityEntity {
     private Long itemId;
 
     @NotBlank
-    private long restaurantId;
+    private Long restaurantId;
 
     @NotBlank
     private int quantity;

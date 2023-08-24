@@ -14,6 +14,7 @@ public class MenuEntity {
 
     @Id
     @Column(name = "menu_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY )
     private Long id;
 
     @NotNull

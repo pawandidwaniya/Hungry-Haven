@@ -34,7 +34,7 @@ public class ItemRepositoryServiceImpl implements ItemRepositoryService{
     @Override
     public Item findByItemId(Long itemId) {
         ModelMapper modelMapper = modelMapperProvider.get();
-        Optional<ItemEntity> itemEntity = itemRepository.findByItemId(itemId);
+        Optional<ItemEntity> itemEntity = itemRepository.findById(itemId);
 
         Item item = null;
         if (itemEntity.isPresent()) {
