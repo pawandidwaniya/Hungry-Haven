@@ -1,12 +1,16 @@
 package com.cdac.hungryhaven.services;
 
 import com.cdac.hungryhaven.dto.Quantity;
+<<<<<<< HEAD
 import com.cdac.hungryhaven.exceptions.ItemNotFoundException;
 import com.cdac.hungryhaven.exceptions.RestaurantNotFoundException;
 import com.cdac.hungryhaven.models.ItemEntity;
 import com.cdac.hungryhaven.models.RestaurantEntity;
 import com.cdac.hungryhaven.repositories.ItemRepository;
 import com.cdac.hungryhaven.repositories.RestaurantRepository;
+=======
+import com.cdac.hungryhaven.repositoryservices.QuantityRepositoryService;
+>>>>>>> 83f7363b6edad8860f89f25e2d885da851b08bab
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,12 +19,10 @@ import org.springframework.stereotype.Service;
 public class QuantityServiceImpl implements QuantityService {
 
     @Autowired
-    private ItemRepository itemRepository; // Inject your ItemRepository here
-
-    @Autowired
-    private RestaurantRepository restaurantRepository; // Inject your RestaurantRepository here
+    private QuantityRepositoryService quantityRepositoryService;
 
     @Override
+<<<<<<< HEAD
     public Quantity updateQuantity(Long itemId, Long restaurantId, int quantityValue) {
         ItemEntity item = retrieveItemById(itemId);
         RestaurantEntity restaurant = retrieveRestaurantById(restaurantId);
@@ -32,32 +34,29 @@ public class QuantityServiceImpl implements QuantityService {
         updatedQuantity.setRestaurantId(restaurant);
         updatedQuantity.setQuantity(quantityValue);
 
+=======
+    public Quantity updateQuantity(Long itemId, Long restaurantId, int quantity) {
+        Quantity updatedQuantity = null;
+        try {
+            updatedQuantity = quantityRepositoryService.updateQuantity(itemId, restaurantId, quantity);
+        } catch (Exception ex) {
+            // Handle the exception appropriately
+        }
+>>>>>>> 83f7363b6edad8860f89f25e2d885da851b08bab
         return updatedQuantity;
     }
 
     @Override
     public Quantity getQuantity(Long itemId, Long restaurantId) throws Exception {
-        ItemEntity item = retrieveItemById(itemId);
-        RestaurantEntity restaurant = retrieveRestaurantById(restaurantId);
-
-        // Retrieve quantity logic here
-
-        Quantity quantity = new Quantity();
-        quantity.setItem(item);
-        quantity.setRestaurant(restaurant);
-        // Set retrieved quantity value
-
-        return quantity;
-    }
-
-    private ItemEntity retrieveItemById(Long itemId) {
-        return itemRepository.findById(itemId)
-                .orElseThrow(() -> new ItemNotFoundException("Item not found with ID: " + itemId));
-    }
-
-    private RestaurantEntity retrieveRestaurantById(Long restaurantId) {
-        return restaurantRepository.findById(restaurantId)
-                .orElseThrow(() -> new RestaurantNotFoundException("Restaurant not found with ID: " + restaurantId));
+        try {
+            Quantity quantity = quantityRepositoryService.getQuantity(itemId, restaurantId);
+            if (quantity == null) {
+                throw new Exception("Quantity not found");
+            }
+            return quantity;
+        } catch (Exception ex) {
+            throw ex;
+        }
+        
     }
 }
-
