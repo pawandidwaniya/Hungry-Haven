@@ -22,7 +22,7 @@ public class RestaurantEntity {
     private String id;
 
     @NotBlank
-    private String restaurantId;
+    private long restaurantId;
 
     @NotBlank
     private String name;
