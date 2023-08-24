@@ -23,7 +23,7 @@ public class ItemRepositoryServiceImpl implements ItemRepositoryService{
     private ItemRepository itemRepository;
 
     @Override
-    public String addItem(Item item) {
+    public Long addItem(Item item) {
         ModelMapper modelMapper = modelMapperProvider.get();
         ItemEntity itemEntity = modelMapper.map(item, ItemEntity.class);
         itemRepository.save(itemEntity);
@@ -32,7 +32,7 @@ public class ItemRepositoryServiceImpl implements ItemRepositoryService{
     }
 
     @Override
-    public Item findByItemId(String itemId) {
+    public Item findByItemId(Long itemId) {
         ModelMapper modelMapper = modelMapperProvider.get();
         Optional<ItemEntity> itemEntity = itemRepository.findByItemId(itemId);
 

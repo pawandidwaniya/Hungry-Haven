@@ -10,7 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MenuServiceImpl implements MenuService {
+public class
+MenuServiceImpl implements MenuService {
 
     @Autowired
     private MenuRepositoryService menuRepositoryService;
@@ -30,7 +31,7 @@ public class MenuServiceImpl implements MenuService {
 
         if (menu != null) {
             for (Item item : menu.getItems()) {
-                if (itemId.equals(item.getId())) {
+                if (itemId.equals(item.getItemId())) {
                     return item;
                 }
             }

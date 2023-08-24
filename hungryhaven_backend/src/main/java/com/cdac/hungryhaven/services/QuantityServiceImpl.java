@@ -7,6 +7,7 @@ import com.cdac.hungryhaven.models.ItemEntity;
 import com.cdac.hungryhaven.models.RestaurantEntity;
 import com.cdac.hungryhaven.repositories.ItemRepository;
 import com.cdac.hungryhaven.repositories.RestaurantRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,8 +28,8 @@ public class QuantityServiceImpl implements QuantityService {
         // Update quantity logic here
 
         Quantity updatedQuantity = new Quantity();
-        updatedQuantity.setItem(item);
-        updatedQuantity.setRestaurant(restaurant);
+        updatedQuantity.setItemId(item);
+        updatedQuantity.setRestaurantId(restaurant);
         updatedQuantity.setQuantity(quantityValue);
 
         return updatedQuantity;

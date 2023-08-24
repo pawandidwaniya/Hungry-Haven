@@ -1,35 +1,26 @@
 package com.cdac.hungryhaven.dto;
 
-import jakarta.persistence.Id;
+
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.antlr.v4.runtime.misc.NotNull;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Item {
 
-    @Id
-    private Long id;
+    private Long itemId;
 
-    @NotNull
-    String itemId;
+    @NotBlank(message = "Name must be provided")
+    private String name;
 
-    @NotNull
-    String name;
+    @NotBlank(message = "Image must be provided")
+    private String imageUrl;
 
-    @NotNull
-    String imageUrl;
-
-    @NotNull
-    List<String> attributes = new ArrayList<>();
-
-    @NotNull
-    int price;
+    @NotBlank(message = "Price must be provided")
+    private Double price;
 
 }

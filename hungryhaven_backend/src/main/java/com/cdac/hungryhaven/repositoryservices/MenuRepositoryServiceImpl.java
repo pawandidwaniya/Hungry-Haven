@@ -78,7 +78,7 @@ public class MenuRepositoryServiceImpl implements MenuRepositoryService {
             ItemEntity itemToBeDeleted = null;
 
             for (ItemEntity item : menuEntity.getItems()) {
-                if (itemId.equals(item.getId())) {
+                if (itemId.equals(item.getItemId())) {
                     itemToBeDeleted = item;
                     break;
                 }
@@ -109,7 +109,7 @@ public class MenuRepositoryServiceImpl implements MenuRepositoryService {
             MenuEntity menuEntity = menuByRestaurantId.get();
 
             for (ItemEntity item : menuEntity.getItems()) {
-                if (editedItem.getId().equals(item.getId())) {
+                if (editedItem.getItemId().equals(item.getItemId())) {
                     modelMapper.map(editedItem, item);
                     menuRepository.save(menuEntity);
                     menu = modelMapper.map(menuEntity, Menu.class);

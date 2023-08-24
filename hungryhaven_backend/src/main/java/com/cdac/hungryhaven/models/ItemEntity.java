@@ -1,13 +1,11 @@
 package com.cdac.hungryhaven.models;
 
-import jakarta.persistence.*;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Data
@@ -16,21 +14,17 @@ import java.util.List;
 public class ItemEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long itemId;
 
-    @NotBlank
-    private String itemId;
-
+    @Column(name = "item_name")
     @NotBlank
     private String name;
 
-    @NotBlank
+    @Column(name = "image_url")
     private String imageUrl;
 
+    @Column(name = "item_price")
     @NotBlank
     private Double price;
-
-    @NotBlank
-    private List<String> attributes = new ArrayList<>();
 }
