@@ -30,9 +30,6 @@ public class RestaurantEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private Long id;
 
-//    @NotBlank
-//    private long restaurantId;
-
     @NotBlank
     private String name;
 
@@ -43,20 +40,11 @@ public class RestaurantEntity {
     private String imageUrl;
 
     @NotBlank
-    private Double latitude;
-
-    @NotBlank
-    private Double longitude;
-
-    @NotBlank
     private String opensAt;
 
     @NotBlank
     private String closesAt;
 
-    @NotBlank
-    private List<String> attributes = new ArrayList<>();
-    
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "menu_id")
     private MenuEntity menu;

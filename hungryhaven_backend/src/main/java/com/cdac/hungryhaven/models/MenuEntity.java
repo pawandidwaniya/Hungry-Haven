@@ -17,12 +17,9 @@ public class MenuEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private Long id;
 
-    @NotNull
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "restaurant_id")
+    @OneToOne(mappedBy = "menu")
     private RestaurantEntity restaurant;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "menu_id")
+    @OneToMany(mappedBy = "menu", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItemEntity> items = new ArrayList<>();
 }

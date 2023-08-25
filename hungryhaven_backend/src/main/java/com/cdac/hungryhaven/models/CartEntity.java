@@ -30,7 +30,7 @@ public class CartEntity {
 	@NotBlank
 	private Long userId;
 	
-	@NotBlank
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cart")
 	private List<ItemEntity> items = new ArrayList();
 	

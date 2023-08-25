@@ -39,5 +39,7 @@ public class UserEntity {
     @Column(name = "restaurantId")
     private Long restaurantId;
 
+
+
 }
 
