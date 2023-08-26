@@ -14,13 +14,12 @@ public class Item {
 
     private Long itemId;
 
-    @NotBlank(message = "Name must be provided")
+
     private String name;
 
-    @NotBlank(message = "Image must be provided")
+
     private String imageUrl;
 
-    @NotBlank(message = "Price must be provided")
     private Double price;
 
 }
