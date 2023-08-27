@@ -4,9 +4,15 @@ import com.cdac.hungryhaven.dto.Item;
 import com.cdac.hungryhaven.dto.Menu;
 import com.cdac.hungryhaven.exceptions.ItemNotFoundInRestaurantMenuException;
 import com.cdac.hungryhaven.exceptions.ItemNotFromSameRestaurantException;
+import com.cdac.hungryhaven.exchanges.GetMenuResponse;
 
 public interface MenuService {
-	 Menu findMenu(Long restaurantId);
+	/**
+	   * Return the restaurant menu.
+	   * @param restaurantId id of the restaurant
+	   * @return the restaurant's menu
+	   */
+	  GetMenuResponse findMenu(Long restaurantId);
 
 	  /**
 	   * Find the item in the restaurant using restaurantId/itemId and return the item if found.
@@ -18,9 +24,9 @@ public interface MenuService {
 	  Item findItem(Long itemId, Long restaurantId) throws ItemNotFoundInRestaurantMenuException,
 	      ItemNotFromSameRestaurantException;
 
-	  Menu addItem(Item item, Long restaurantId) throws Exception;
+	  GetMenuResponse addItem(Item item, Long restaurantId) throws Exception;
 
-	  Menu removeItem(Long itemId, Long restaurantId) throws Exception;
+	  GetMenuResponse removeItem(Long itemId, Long restaurantId) throws Exception;
 
-	  Menu updateItem(Item item, Long restaurantId) throws ItemNotFoundInRestaurantMenuException;
+	  GetMenuResponse updateItem(Item item, Long restaurantId) throws ItemNotFoundInRestaurantMenuException;;
 }

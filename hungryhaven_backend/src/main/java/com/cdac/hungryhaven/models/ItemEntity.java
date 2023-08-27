@@ -3,6 +3,9 @@ package com.cdac.hungryhaven.models;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import com.cdac.hungryhaven.dto.Item;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
@@ -33,7 +36,19 @@ public class ItemEntity {
     @JoinColumn(name = "cart_id") // This links the item to its parent cart
     private CartEntity cart;
     
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "menu_id")
     private MenuEntity menu;
+    
+    @ManyToOne
+    @JoinColumn(name = "order_id") // This links the item to its parent order
+    private OrderEntity order;
+    
+    public ItemEntity(Item item) {
+        // Perform the conversion from Item to ItemEntity here
+        this.id = item.getItemId();
+        this.name = item.getName();
+        // Map other fields as needed
+}
 }
