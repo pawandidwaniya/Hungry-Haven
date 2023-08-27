@@ -1,4 +1,4 @@
-package com.cdac.hungryhaven.repositoryservices;;
+package com.cdac.hungryhaven.repositoryservices;
 
 
 import com.cdac.hungryhaven.dto.Restaurant;

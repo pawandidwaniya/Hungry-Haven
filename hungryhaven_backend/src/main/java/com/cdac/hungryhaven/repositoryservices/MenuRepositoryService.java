@@ -7,7 +7,7 @@ import com.cdac.hungryhaven.dto.Menu;
 
 @Service
 public interface MenuRepositoryService {
-	Menu findMenu(Long restaurantId);
+	  Menu findMenu(Long restaurantId);
 
 	  Menu addItemToMenu(Long itemId, Long restaurantId) throws Exception;
 

@@ -5,7 +5,8 @@ public class ItemNotFromSameRestaurantException extends HungryHavenException {
     public ItemNotFromSameRestaurantException(String message) {
         super(message);
     }
-
+    public ItemNotFromSameRestaurantException() {
+	}
 	@Override
 	public int getErrorType() {
 		// TODO Auto-generated method stub
