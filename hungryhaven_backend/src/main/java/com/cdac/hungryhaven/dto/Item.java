@@ -1,35 +1,25 @@
 package com.cdac.hungryhaven.dto;
 
-import jakarta.persistence.Id;
+
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.antlr.v4.runtime.misc.NotNull;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Item {
 
-    @Id
-    private Long id;
+    private Long itemId;
 
-    @NotNull
-    String itemId;
 
-    @NotNull
-    String name;
+    private String name;
 
-    @NotNull
-    String imageUrl;
 
-    @NotNull
-    List<String> attributes = new ArrayList<>();
+    private String imageUrl;
 
-    @NotNull
-    int price;
+    private Double price;
 
 }

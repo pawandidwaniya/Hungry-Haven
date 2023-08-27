@@ -1,13 +1,14 @@
 package com.cdac.hungryhaven.models;
 
-import jakarta.persistence.*;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import com.cdac.hungryhaven.dto.Item;
+
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Data
@@ -16,21 +17,38 @@ import java.util.List;
 public class ItemEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "item_id")
     private Long id;
 
-    @NotBlank
-    private String itemId;
-
+    @Column(name = "item_name")
     @NotBlank
     private String name;
 
-    @NotBlank
+    @Column(name = "image_url")
     private String imageUrl;
 
+    @Column(name = "item_price")
     @NotBlank
     private Double price;
-
-    @NotBlank
-    private List<String> attributes = new ArrayList<>();
+    
+    @ManyToOne
+    @JoinColumn(name = "cart_id") // This links the item to its parent cart
+    private CartEntity cart;
+    
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "menu_id")
+    private MenuEntity menu;
+    
+    @ManyToOne
+    @JoinColumn(name = "order_id") // This links the item to its parent order
+    private OrderEntity order;
+    
+    public ItemEntity(Item item) {
+        // Perform the conversion from Item to ItemEntity here
+        this.id = item.getItemId();
+        this.name = item.getName();
+        // Map other fields as needed
+}
 }

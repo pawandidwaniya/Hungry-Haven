@@ -1,7 +1,14 @@
 package com.cdac.hungryhaven.models;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
@@ -19,10 +26,9 @@ import java.util.List;
 public class RestaurantEntity {
 
     @Id
-    private String id;
-
-    @NotBlank
-    private String restaurantId;
+    @Column(name = "restaurant_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY )
+    private Long id;
 
     @NotBlank
     private String name;
@@ -34,19 +40,14 @@ public class RestaurantEntity {
     private String imageUrl;
 
     @NotBlank
-    private Double latitude;
-
-    @NotBlank
-    private Double longitude;
-
-    @NotBlank
     private String opensAt;
 
     @NotBlank
     private String closesAt;
 
-    @NotBlank
-    private List<String> attributes = new ArrayList<>();
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "menu_id")
+    private MenuEntity menu;
 
 
 }
